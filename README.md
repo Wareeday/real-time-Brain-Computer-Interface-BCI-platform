@@ -1,207 +1,326 @@
-🧠 Neural Signal Acquisition & Preprocessing Engine
+🧠 Brain–Computer Interface (BCI) Platform
+OpenBCI + Signal Processing + Machine Learning for Assistive Technology
 
-Production-ready EEG acquisition and preprocessing pipeline built in Python using BrainFlow.
-Designed for real-time neural data streaming, signal conditioning, and feature extraction — suitable for research, BCI systems, and ML pipelines.
+📌 Project Overview
 
-📌 Overview
+This project implements a real-time Brain–Computer Interface (BCI) platform designed to support assistive technology applications for individuals with disabilities.
 
-This project provides a modular architecture for:
+The system:
 
-Real-time EEG data streaming
+Acquires EEG signals using OpenBCI hardware
 
-Signal preprocessing (bandpass filtering)
+Processes neural signals in real-time
 
-Feature extraction
+Applies machine learning for intention decoding
 
-Clean session lifecycle management
+Integrates with assistive devices (wheelchair, prosthetics, speech systems)
 
-Synthetic board testing for development without hardware
+Ensures secure and privacy-preserving neural data handling
 
-The system is structured to be scalable, maintainable, and ready for integration into larger AI or BCI systems.
+This platform combines:
+
+Neurotechnology
+
+Signal processing
+
+Artificial intelligence
+
+Human-computer interaction
 
 🏗 System Architecture
-NeuralSignalAcquisition
-│
-├── Board Initialization
-│   ├── BoardShim
-│   └── BrainFlowInputParams
-│
-├── Streaming Layer
-│   ├── prepare_session()
-│   ├── start_stream()
-│   ├── collect_data()
-│   ├── stop_stream()
-│   └── release_session()
-│
-├── Preprocessing Layer
-│   ├── Bandpass Filtering
-│   └── Channel-wise Processing
-│
-└── Feature Extraction Layer
-    ├── Mean
-    ├── Standard Deviation
-    ├── RMS
-    └── Signal Range
+High-Level Pipeline
+Human Brain
+    ↓
+EEG Acquisition (OpenBCI)
+    ↓
+LabStreamingLayer (LSL)
+    ↓
+Apache Kafka (Real-Time Streaming)
+    ↓
+Signal Processing (Filtering + ICA)
+    ↓
+Feature Extraction (PSD, μ, β, P300)
+    ↓
+Machine Learning (SVM / CNN / LSTM)
+    ↓
+Decision Engine
+    ↓
+Assistive Devices (Wheelchair / Prosthetic / Speech)
 
-🚀 Key Features
+🔐 Security Layer (Cross-Cutting)
 
-Real-time EEG acquisition
+Data Encryption (AES / TLS)
 
-Synthetic board support for development
+Consent Management
 
-Configurable bandpass filtering
+Anonymization
 
-Channel-wise signal processing
+GDPR & global neurodata compliance principles
 
-Statistical feature extraction
+🎯 Key Features
+✅ Neural Signal Acquisition
 
-Structured logging
+OpenBCI EEG streaming
 
-Clean shutdown handling
+Multi-channel real-time acquisition
 
-Modular OOP design
+LabStreamingLayer integration
 
-🛠 Tech Stack
+✅ Real-Time Signal Processing
 
-Python 3.9+
+Bandpass filtering (0.5–45 Hz)
 
-BrainFlow
-
-NumPy
-
-Logging
-
-📦 Installation
-1. Clone Repository
-git clone https://https://github.com/Wareeday/My-Eduqual-Exam/edit/master
-cd neural-signal-acquisition
-
-2. Create Virtual Environment
-python -m venv .venv
-.venv\Scripts\activate
-
-3. Install Dependencies
-pip install brainflow numpy
-
-▶️ Usage
-
-Run the main script:
-
-python "Neural acquisition.PY"
-
-
-Example output:
-
-INFO:__main__:Started EEG streaming
-Acquired data shape: (16, 250)
-INFO:__main__:Stopped EEG streaming
-
-Extracted Features:
-{
-  "mean": ...,
-  "std": ...,
-  "range": ...,
-  "rms": ...
-}
-
-⚙️ Configuration
-
-By default, the system uses:
-
-BoardIds.SYNTHETIC_BOARD
-
-
-This enables development without physical EEG hardware.
-
-To connect to a real device, modify the board ID:
-
-board_id = BoardIds.YOUR_DEVICE
-
-
-Ensure proper hardware configuration in BrainFlowInputParams.
-
-🧪 Signal Processing Details
-Bandpass Filter
-
-Low Cut Frequency: 1 Hz
-
-High Cut Frequency: 40 Hz
-
-Filter Type: Butterworth
-
-Applied per EEG channel
-
-Purpose:
-
-Remove DC drift
-
-Eliminate high-frequency noise
-
-Preserve cognitive frequency bands
-
-📊 Feature Extraction
-
-For each EEG channel, the system computes:
-
-Mean
-
-Standard Deviation
-
-Root Mean Square (RMS)
-
-Signal Range
-
-These features are suitable for:
-
-Brain-Computer Interface systems
-
-Cognitive workload detection
-
-Emotion recognition
-
-ML model training
-
-Neurofeedback systems
-
-🧠 Production Considerations
-
-Proper session lifecycle management prevents memory leaks
-
-Designed to integrate with ML pipelines
-
-Easily extendable for:
-
-Power spectral density analysis
-
-Frequency band extraction (Alpha, Beta, Gamma)
+Notch filtering (50/60 Hz)
 
 Artifact removal (ICA)
 
-Real-time dashboards
+Multi-channel parallel processing
 
-Cloud deployment
+✅ Machine Learning for Neural Decoding
 
-⚠️ Notes
+Motor imagery classification
 
-You may see a BrainFlow cleanup warning during interpreter shutdown:
+P300 detection
 
-Exception ignored in: <function BoardShim.__del__>
+Classical ML (SVM, LDA)
+
+Deep learning (TensorFlow, PyTorch)
+
+Adaptive calibration models
+
+✅ Assistive Device Integration
+
+Arduino / Raspberry Pi control
+
+Wheelchair command interface
+
+Prosthetic integration
+
+Speech synthesis (AAC systems)
+
+✅ Neurofeedback System
+
+Real-time EEG visualization
+
+Performance-based adaptive difficulty
+
+Gamified training approach
+
+✅ Privacy & Security
+
+Encrypted neural data transmission
+
+Secure streaming
+
+Consent-based data usage
+
+🛠 Technologies Used
+BCI Hardware
+
+OpenBCI
+
+g.tec
+
+NeuroSky
+
+Signal Processing
+
+GNU Radio
+
+MNE-Python
+
+EEGLAB
+
+Machine Learning
+
+scikit-learn
+
+TensorFlow
+
+PyTorch
+
+Streaming
+
+LabStreamingLayer (LSL)
+
+Apache Kafka
+
+ZeroMQ
+
+Integration
+
+Arduino
+
+Raspberry Pi
+
+ROS
+
+Visualization
+
+Matplotlib
+
+Plotly
+
+BrainViz
+
+Standards & Compliance
+
+IEEE 2857
+
+ISO 14155
+
+FDA 510(k)
+
+⚙ Installation Guide
+1️⃣ Clone Repository
+git clone https://https://github.com/Wareeday/My-Eduqual-Exam
+cd bci-platform
+
+2️⃣ Create Virtual Environment
+python3 -m venv bci_env
+source bci_env/bin/activate
+
+3️⃣ Install Dependencies
+pip install -r requirements.txt
 
 
-This occurs during Python shutdown and does not affect functionality.
+Or manually:
 
-🔒 Scalability & Extension
+pip install numpy scipy pandas matplotlib
+pip install mne pylsl
+pip install scikit-learn tensorflow torch
+pip install kafka-python pyserial pyttsx3 cryptography
 
-Future roadmap:
+🚀 Running the Project
+Step 1 – Start EEG Stream
 
-Real-time visualization dashboard
+Enable LSL streaming in OpenBCI GUI.
 
-REST API wrapper
+Run:
 
-Kafka-based streaming
+python eeg_stream.py
 
-ML inference integration
+Step 2 – Signal Processing
+python signal_processing.py
 
-Containerized deployment (Docker)
+Step 3 – Train Machine Learning Model
+python train_model.py
 
-Kubernetes-based scaling
+Step 4 – Run Real-Time Control System
+python realtime_control.py
+
+🧠 Machine Learning Workflow
+
+Collect EEG data
+
+Preprocess signals
+
+Extract features (PSD, band power)
+
+Train classifier
+
+Deploy model for real-time inference
+
+Supported Tasks:
+
+Motor Imagery (Left vs Right)
+
+P300 Event Detection
+
+Attention Monitoring
+
+♿ Assistive Applications
+
+Brain-controlled wheelchair
+
+Prosthetic limb activation
+
+Text-to-speech communication
+
+Smart home control
+
+📊 Neurofeedback Module
+
+Live EEG visualization
+
+User performance metrics
+
+Adaptive difficulty adjustment
+
+Gamified learning interface
+
+🔒 Privacy & Ethical Considerations
+
+Neural data is sensitive biometric and health data.
+
+This system includes:
+
+Encryption
+
+Secure transmission
+
+Access control
+
+Consent management
+
+Data minimization principles
+
+Ethical compliance aligns with:
+
+Global neuro-rights principles
+
+GDPR concepts
+
+Human-centered AI standards
+
+🏥 Industry Applications
+
+Assistive technology companies
+
+Medical device manufacturers
+
+Rehabilitation centers
+
+Neurotechnology research institutions
+
+📚 Case Study
+
+EEG-BCI Wheelchair Control:
+
+Real-time EEG acquisition
+
+ML-based command classification
+
+Simulation environment testing
+
+Demonstrated feasibility of brain-controlled mobility
+
+📝 Examination Scope
+
+This project demonstrates:
+
+BCI architecture with real-time processing
+
+Neural signal classification using ML
+
+Assistive device integration
+
+Secure neural data handling
+
+Industry-aligned compliance standards
+
+📌 Future Improvements
+
+Real-world patient trials
+
+Edge AI deployment
+
+Federated learning for privacy
+
+Improved noise-robust models
+
+Cloud-native deployment
+
+📄 License
+
+This project is for academic and research purposes.
