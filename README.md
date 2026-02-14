@@ -73,7 +73,7 @@ Logging
 
 📦 Installation
 1. Clone Repository
-git clone https://github.com/your-username/neural-signal-acquisition.git
+git clone https://https://github.com/Wareeday/My-Eduqual-Exam/edit/master
 cd neural-signal-acquisition
 
 2. Create Virtual Environment
@@ -205,9 +205,3 @@ ML inference integration
 Containerized deployment (Docker)
 
 Kubernetes-based scaling
-
-📁 Project Structure
-.
-├── Neural acquisition.PY
-├── README.md
-└── .venv/
